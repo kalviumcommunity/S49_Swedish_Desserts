@@ -1,5 +1,4 @@
-asap project :
-idea:
-list of good sewdish desserts
-
-different users get a list of different desserts
+ASAP PROJECT:
+IDEA:
+LIST OF GOOD SWEDISH DESSERTS
+DIFFERENT USERS CAN GET LIST OF DIFFERENT SWEDISH DESSERTS

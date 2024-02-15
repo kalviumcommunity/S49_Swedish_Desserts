@@ -1,0 +1,11 @@
+{
+  "name": "s49_swedish_desserts",
+  "version": "1.0.0",
+  "description": "ASAP PROJECT:List of good swedish desserts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
