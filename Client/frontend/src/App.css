@@ -4,55 +4,73 @@
   padding: 2rem;
   text-align: center;
 }
+/* App.css */
 
-/* EntityDummyComponent.css */
-.entity-table {
-  border-collapse: collapse;
-  width: 100%;
+.title {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.entity-table th,
-.entity-table td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  text-align: left;
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
-.entity-table th {
-  background-color: #f2f2f2;
+.cakes-container,
+.cookies-container {
+  flex: 1;
+  margin: 0 10px;
 }
 
-.entity-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
-.entity-table tr:hover {
-  background-color: #f2f2f2;
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 5px;
 }
 
 
-/* cookies */
-.cookies-table-container {
-  margin: 20px;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-.cookies-table {
-  width: 100%;
-  border-collapse: collapse;
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 10vh; /* 20% of the viewport height */
+  background-color: #333; /* Example background color */
+  color: #fff;
 }
 
-.cookies-table th,
-.cookies-table td {
-  padding: 8px;
-  border: 1px solid #dddddd;
-  text-align: left;
+/* Content Styles */
+.content {
+  margin-top: 20vh; /* Ensure content does not overlap with navbar */
+  height: 80vh; /* Take up remaining 80% of the viewport height */
+  padding: 20px; /* Example padding */
+  box-sizing: border-box; /* Include padding in height calculation */
 }
 
-.cookies-table th {
-  background-color: #f2f2f2;
-}
-
-.cookie-image {
-  width: 100px;
-  height: 100px;
-}
+/* Additional Styles */
+/* You can add more styles as needed */
