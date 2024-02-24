@@ -6,13 +6,13 @@ import './Review.css';
 const Review = ({ setSubmittedData }) => {
   const [formData, setFormData] = useState({
     dessertName: '',
-    ingredients: '',
+   
     ratings: '',
     description: ''
   });
  
   const [successMessage, setSuccessMessage] = useState('');
-  const { dessertName, ingredients, ratings, description } = formData;
+  const { dessertName, ratings, description } = formData;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,21 +20,26 @@ const Review = ({ setSubmittedData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check if any form field is empty
+    if (!dessertName ||  !ratings || !description) {
+      alert("Please fill in all fields.");
+      return;
+    }
     try {
-        await axios.post('http://localhost:3000/reviews', formData); // Adjust the endpoint accordingly
-        setSuccessMessage('Submitted successfully'); 
-        setSubmittedData(prevData => [...prevData, formData]); // Update submitted data in App.jsx
-        setFormData({ 
-          dessertName: '',
-          ingredients: '',
-          ratings: '',
-          description: ''
+      await axios.post('http://localhost:3000/reviews', formData); // Adjust the endpoint accordingly
+      setSuccessMessage('Submitted successfully');
+      setSubmittedData(prevData => [...prevData, formData]); // Update submitted data in App.jsx
+      setFormData({
+        dessertName: '',
+        ratings: '',
+        description: ''
       });
     } catch (error) {
       console.error('Error submitting review:', error);
       // Handle error
     }
   };
+  
 
   return (
     <div className="container">
@@ -46,10 +51,7 @@ const Review = ({ setSubmittedData }) => {
             <label htmlFor="dessertName">Dessert Name:</label>
             <input type="text" id="dessertName" name="dessertName" value={dessertName} onChange={handleChange} />
           </div>
-          <div>
-            <label htmlFor="ingredients">Ingredients:</label>
-            <input type="text" id="ingredients" name="ingredients" value={ingredients} onChange={handleChange} />
-          </div>
+          
           <div>
             <label htmlFor="ratings">Ratings:</label>
             <input type="number" id="ratings" name="ratings" value={ratings} onChange={handleChange} />

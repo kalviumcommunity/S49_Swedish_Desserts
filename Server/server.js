@@ -43,7 +43,6 @@ app.get("/getcookies", async (req, res) => {
 
 const Review = mongoose.model('Review', {
   dessertName: String,
-  ingredients: String,
   ratings: Number,
   description: String
 });
@@ -51,10 +50,10 @@ const Review = mongoose.model('Review', {
 
 app.post('/reviews', async (req, res) => {
   try {
-    const { dessertName, ingredients, ratings, description } = req.body;
+    const { dessertName, ratings, description } = req.body;
     const newReview = new Review({
       dessertName,
-      ingredients,
+     
       ratings,
       description
     });
@@ -67,7 +66,42 @@ app.post('/reviews', async (req, res) => {
 });
 
 
+async function getAllReview() {
+  var x = await Review.find();
+  return x;
+}
 
+app.get("/review", async (req, res) => {
+  let value = await getAllReview();
+  res.send(value).status(200);
+});
+
+
+
+// Update a review
+app.put('/review/:id', async (req, res) => {
+  const { id } = req.params;
+  const { dessertName, ratings, description } = req.body;
+  try {
+    const updatedReview = await Review.findByIdAndUpdate(id, { dessertName, ratings, description }, { new: true });
+    res.json(updatedReview);
+  } catch (error) {
+    console.error('Error updating review:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Delete a review
+app.delete('/review/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Review.findByIdAndDelete(id);
+    res.json({ message: 'Review deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting review:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 Connection().then(() => {
   app.listen(port, () => {
@@ -82,7 +116,7 @@ Connection().then(() => {
 const routes = require("./routes");
 
 // Routes
-app.use("/", routes); // Mount the routes at the root URL
+app.use("/routes", routes); // Mount the routes at the root URL
 
 app.get("/ping", (req, res) => {
   res.send("pong");
