@@ -16,8 +16,7 @@ function App() {
       {/* Navbar */}
       <div className="navbar">
         <Navbar />
-      </div>
-      
+      </div>      
       {/* Content */}
       <div className="content">
         <Routes>

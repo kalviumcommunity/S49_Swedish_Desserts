@@ -1,75 +1,61 @@
-
-// routes.js
 const express = require('express');
 const router = express.Router();
-const { MongoClient, ObjectID } = require('mongodb');
 
-// MongoDB connection URL
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Create
-router.post('/create', async (req, res) => {
-  try {
-    // Connect to the MongoDB database
-    await client.connect();
-    console.log('Connected to the database');
-
-    //  to insert data  do it here
-
-    res.status(201).json({ "success": "data created" });
-  } catch (error) {
-    console.error('Error connecting to the database:', error);
-    res.status(500).json({ "error": "Internal Server Error" });
-  }
-});
+let food = [
+  { id: 1, dessertname: 'Red velvet cake', type: 'cake' },
+  { id: 2, dessertname: 'Tiramisu Cake', type: 'cake' }
+];
 
 // Read
-router.get('/read', async (req, res) => {
-  try {
-    // Connect to the MongoDB database
-    await client.connect();
-    console.log('Connected to the database');
+router.get('/routes', (req, res) => {
+  res.json(food);
+});
 
-    //  to read data do it here
-
-    res.status(200).json({ "success": "data read" });
-  } catch (error) {
-    console.error('Error connecting to the database:', error);
-    res.status(500).json({ "error": "Internal Server Error" });
+router.get('/routes/:id', (req, res) => {
+  const foodId = parseInt(req.params.id);
+  const item = food.find(item => item.id === foodId);
+  if (!item) {
+    return res.status(404).json({ message: 'Item not found' });
   }
+  res.json(item);
+});
+
+// Create
+router.post('/routes', (req, res) => {
+  const { dessertname, type } = req.body;
+  if (!dessertname || !type) {
+    return res.status(400).json({ message: 'dessertname and type are required' });
+  }
+  const newItem = {
+    id: food.length + 1,
+    dessertname: dessertname,
+    type: type
+  };
+  food.push(newItem);
+  res.status(201).json(newItem);
 });
 
 // Update
-router.put('/update', async (req, res) => {
-  try {
-    // Connect to the MongoDB database
-    await client.connect();
-    console.log('Connected to the database');
-
-    //  to update data do it here
-
-    res.status(200).json({ "success": "data updated" });
-  } catch (error) {
-    console.error('Error connecting to the database:', error);
-    res.status(500).json({ "error": "Internal Server Error" });
+router.put('/routes/:id', (req, res) => {
+  const foodId = parseInt(req.params.id);
+  const itemIndex = food.findIndex(item => item.id === foodId);
+  if (itemIndex === -1) {
+    return res.status(404).json({ message: 'Item not found' });
   }
+  const { dessertname, type } = req.body;
+  if (!dessertname || !type) {
+    return res.status(400).json({ message: 'dessertname and type are required' });
+  }
+  food[itemIndex].dessertname = dessertname;
+  food[itemIndex].type = type;
+  res.json(food[itemIndex]);
 });
 
 // Delete
-router.delete('/delete', async (req, res) => {
-  try {
-    // Connect to the MongoDB database
-    await client.connect();
-    console.log('Connected to the database');
-
-    //  to delete data do it here
-
-    res.status(200).json({ "success": "data deleted" });
-  } catch (error) {
-    console.error('Error connecting to the database:', error);
-    res.status(500).json({ "error": "Internal Server Error" });
-  }
+router.delete('/routes/:id', (req, res) => {
+  const foodId = parseInt(req.params.id);
+  food = food.filter(item => item.id !== foodId);
+  res.json({ message: 'Item deleted successfully' });
 });
 
 module.exports = router;
