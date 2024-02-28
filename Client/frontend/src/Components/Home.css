@@ -1,0 +1,91 @@
+.home-container {
+    position: relative;
+  }
+  
+  .read-review-container {
+    position: fixed; /* Position fixed to keep it at the bottom even when scrolling */
+    bottom: 30px; /* Adjust this value as needed to create spacing from the bottom */
+    right: 20px;
+  }
+  
+  
+  .read-review-image {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    border-radius: 50%;
+     animation: bounceAnimation 1s ease-in-out infinite alternate; /* Define the animation */
+}
+
+@keyframes bounceAnimation {
+  0% {
+    transform: translateY(0); /* Start position */
+  }
+  100% {
+    transform: translateY(-15px); /* End position */
+  }
+}
+
+    
+  
+
+  .chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 600px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: grid;
+    grid-template-rows: 10% 90%; /* 10% for close button container, 90% for submitted data container */
+  }
+  
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+ 
+    
+.close-button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .submitted-data-container {
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds container height */
+   
+  }
+  
+  
+  .close-icon {
+    width: 40px; /* Adjust the width and height as needed */
+    height: 40px;
+  }
+  
+
+
+  /* images */
+  .card-containerhome {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 20px; /* Spacing between cards */
+    justify-content: center; /* Center horizontally */
+    
+  }
+  
+  .cardhome {
+    max-width: 345px;
+    margin-top: 10%;
+    box-shadow:  4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(128, 0, 128, 0.5); /* Example shadow */
+    border-Radius: "20px",
+}

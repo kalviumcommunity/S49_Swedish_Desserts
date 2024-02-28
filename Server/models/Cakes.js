@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const CakesSchema = new mongoose.Schema({
     name: String,
     description: String,
-    price: Number,
+    image_url: String,
     calories: Number,
     type: String,
     occasions: Array 

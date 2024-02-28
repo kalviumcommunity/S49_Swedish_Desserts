@@ -13,10 +13,19 @@
   border-image-slice: 1; /* Ensures the gradient covers the entire border */
   margin: 20px;
 }
-
-
 .navbar-logo img {
-  width: 100px; /* Adjust as per your logo's size */
+  width: 120px; /* Adjust as per your logo's size */
+  margin-bottom: 15px;
+  animation: pulseAnimation 1s ease-in-out infinite alternate; /* Define the animation */
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1); /* Start scale */
+  }
+  100% {
+    transform: scale(1.1); /* End scale */
+  }
 }
 
 .navbar-links a {

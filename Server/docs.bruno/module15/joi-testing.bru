@@ -1,0 +1,19 @@
+meta {
+  name: joi-testing
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/reviews
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+     "dessertName": "cake",
+    "ratings":"ss",
+    "description": "t1"
+  }
+}

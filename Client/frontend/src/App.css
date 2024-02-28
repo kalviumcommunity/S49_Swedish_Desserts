@@ -6,9 +6,11 @@
 }
 /* App.css */
 
-.title {
-  text-align: center;
-  margin-bottom: 20px;
+.Cakes{
+  color: #4b0836;
+  font-size: 90px;
+  font-style: italic;
+  box-shadow: 3px 3px 5px #910A67;
 }
 
 .cards-container {
@@ -31,38 +33,9 @@
   
 }
 
-.card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px;
-  border: 2px solid transparent; /* Initial transparent border */
-  border-image: linear-gradient(to right, #ff69b4, #800080); /* Gradient border */
-  border-image-slice: 1; /* Ensures the gradient covers the entire border */
-}
-
-.card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-.card img {
-  width: 100%; /* Set the width to 100% */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 200px; /* Set the maximum height */
-}
-
-
-
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+.card{
+  box-shadow:  4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(128, 0, 128, 0.5); /* Example shadow */
+  border-Radius: "20px",
 }
 
 /* Navbar Styles */
@@ -70,7 +43,8 @@ body, html {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* Full width */
+  /* right:10%; */
+  width: 95%; /* Full width */
   height: 10vh; /* 20% of the viewport height */
   background-color: #333; /* Example background color */
   color: #fff;
@@ -78,11 +52,12 @@ body, html {
 
 /* Content Styles */
 .content {
-  margin-top: 20vh; /* Ensure content does not overlap with navbar */
-  height: 80vh; /* Take up remaining 80% of the viewport height */
+  margin-top: 15vh; /* Ensure content does not overlap with navbar */
+  /* height: 80vh; Take up remaining 80% of the viewport height */
+  height: 100%;
+  width: 100%;
   padding: 20px; /* Example padding */
   box-sizing: border-box; /* Include padding in height calculation */
 }
 
-/* Additional Styles */
-/* You can add more styles as needed */
+
