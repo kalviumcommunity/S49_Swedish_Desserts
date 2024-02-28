@@ -1,0 +1,38 @@
+.footer {
+    background-color: rgba(245, 245, 245, 0.826); /* Set background color */
+    padding: 10px; /* Add padding for spacing */
+    margin-top: 60px;
+  }
+  
+  .footer-content {
+    text-align: center; /* Center align content */
+  }
+  
+  .social-links {
+    margin-top: 10px; /* Add margin for spacing */
+  }
+  
+  .social-link {
+    margin-right: 10px; /* Add margin between social links */
+    text-decoration: none;
+    color: #333; /* Set text color */
+  }
+  
+  .footer-logo img {
+    width: 200px; /* Set width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center align the logo */
+    margin: 20px auto; /* Add margin for spacing */
+  }
+  
+  
+  .footer {
+    border: 3px solid;
+    border-image: linear-gradient(to right, #ff69b4, #800080); /* Gradient border */
+    border-image-slice: 1; /* Ensure full border is covered by the gradient */
+  }
+  .social-links img {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  

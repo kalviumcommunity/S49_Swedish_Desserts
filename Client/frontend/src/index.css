@@ -1,3 +1,5 @@
+
+@import url('https://fonts.cdnfonts.com/css/poppins');
 body {
   background-size: cover; /* Ensures the background image covers the entire viewport */
   background-repeat: no-repeat; /* Prevents the background image from repeating */
@@ -9,7 +11,5 @@ body {
   margin: 0; /* Removes default body margin */
   padding: 0; /* Removes default body padding */
   height: 100vh; /* Sets the body height to the full viewport height */
+  font-family: 'Poppins', sans-serif;;
 }
-
-/* Additional styling */
-/* You can add more styles as needed */

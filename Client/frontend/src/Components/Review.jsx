@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Review.css';
 
-const Review = ({ setSubmittedData }) => {
+
+
+
+const Review = ({ setSubmittedData}) => {
   const [formData, setFormData] = useState({
     dessertName: '',
    
@@ -18,22 +21,43 @@ const Review = ({ setSubmittedData }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
     // Check if any form field is empty
-    if (!dessertName ||  !ratings || !description) {
+    if (!dessertName || !ratings || !description) {
       alert("Please fill in all fields.");
       return;
     }
+  
     try {
-      await axios.post('http://localhost:3000/reviews', formData); // Adjust the endpoint accordingly
-      setSuccessMessage('Submitted successfully');
-      setSubmittedData(prevData => [...prevData, formData]); // Update submitted data in App.jsx
-      setFormData({
-        dessertName: '',
-        ratings: '',
-        description: ''
-      });
+      // Check if dessert name exists in cakes API
+      const cakesResponse = await fetch('http://localhost:3000/getcakes');
+      const cakesData = await cakesResponse.json();
+      const cakeNames = cakesData.map(cake => cake.name);
+  
+      // Check if dessert name exists in cookies API
+      const cookiesResponse = await fetch('http://localhost:3000/getcookies');
+      const cookiesData = await cookiesResponse.json();
+      const cookieNames = cookiesData.map(cookie => cookie.name);
+  
+      // Check if dessertName exists in cakeNames or cookieNames
+      if (cakeNames.includes(dessertName) || cookieNames.includes(dessertName)) {
+        // Dessert found, proceed with form submission
+        await axios.post('http://localhost:3000/reviews', formData);
+        setSuccessMessage('Submitted successfully');
+        setSubmittedData(prevData => [...prevData, formData]); // Update submitted data in App.jsx
+        setFormData({
+          dessertName: '',
+          ratings: '',
+          description: ''
+        });
+      } else {
+        // Dessert not found, display error message
+        alert("Dessert not found");
+        console.log('Dessert not found');
+        // Implement code to display error message to user
+      }
     } catch (error) {
       console.error('Error submitting review:', error);
       // Handle error
@@ -63,7 +87,7 @@ const Review = ({ setSubmittedData }) => {
           <button type="submit">Submit Review</button>
         </form>
       </div>
-     </div>
+          </div>
   );
 };
 

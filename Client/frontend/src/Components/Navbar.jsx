@@ -4,6 +4,7 @@ import './Navbar.css';
 import logo from "../images/logo.png";
 import cakelogo from "../images/cakelogo.png";
 import cookielogo from "../images/cookielogo.png";
+import star from "../images/star.png";
 
 const Navbar = () => {
   return (
@@ -14,6 +15,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-links">
+
+
+
         <div className="navbar-item">
           <Link to="/cakes"> {/* Link to /cakes */}
             <img src={cakelogo} alt="Cake" className="logo" />
@@ -26,7 +30,14 @@ const Navbar = () => {
           </Link>
           <span className="link-text">Cookies</span>
         </div>
-        <Link to="/write-review">Write a Review</Link> {/* New Link */}
+
+        <div className="navbar-item">
+          <Link to="/write-review"> {/* Link to /cookies */}
+            <img src={star} alt="star" className="logo" />
+          </Link>
+          <span className="link-text">Write a Review</span>
+        </div>
+
       </div>
     </nav>
   );
