@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie'; // Import js-cookie library
 import './Signup.css'; // Import CSS file for SignUpLogin
 
 const SignUpLogin = ({ onLoginSuccess }) => {
@@ -12,7 +13,7 @@ const SignUpLogin = ({ onLoginSuccess }) => {
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
-    console.log("success")
+    console.log("success");
   };
 
   const handleSubmit = async (e) => {
@@ -26,10 +27,13 @@ const SignUpLogin = ({ onLoginSuccess }) => {
         // Login
         const response = await axios.post('http://localhost:3000/login', { username, password });
         setMessage(response.data.message);
+        Cookies.set('username', username);
       } else {
         // Sign Up
         const response = await axios.post('http://localhost:3000/signup', { username, password });
         setMessage(response.data.message);
+        // Set username as a cookie after successful sign-up
+        Cookies.set('username', username);
       }
       // Set isAuthenticated to true after successful login/signup
       setIsAuthenticated(true);

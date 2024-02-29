@@ -5,8 +5,18 @@ import logo from "../images/logo.png";
 import cakelogo from "../images/cakelogo.png";
 import cookielogo from "../images/cookielogo.png";
 import star from "../images/star.png";
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
+
+  const handleLogout = () => {
+    // Remove the username cookie
+    Cookies.remove('username');
+    // Refresh the page
+    window.location.reload();
+  };
+  
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -36,6 +46,13 @@ const Navbar = () => {
             <img src={star} alt="star" className="logo" />
           </Link>
           <span className="link-text">Write a Review</span>
+        </div>
+
+        <div className="navbar-item">
+          <Link to="/" onClick={handleLogout}> {/* Link to handle logout */}
+            <img src={star} alt="logout" className="logo" />
+          </Link>
+          <span className="link-text">Log out</span>
         </div>
 
       </div>
