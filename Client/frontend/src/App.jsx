@@ -9,7 +9,7 @@ import SignUpLogin from './Components/Signup.jsx'; // Import your SignUpLogin co
 import './App.css';
 import './Components/Review.css';
 import Footer from './Components/Footer';
-
+import Cookie from './Components/CookieStorage.jsx'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
 
@@ -38,10 +38,13 @@ function App() {
           <Route path="/write-review" element={<Review/>} />
         </Routes>
 
+       
+
         )}
       </div>
       {/* Footer */}
       <Footer />
+     
     </div>
   );
 }
