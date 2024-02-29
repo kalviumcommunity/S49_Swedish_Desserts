@@ -9,7 +9,7 @@ const CookiesModel = require("../Server/models/Cookies");
 const { UserModel, userSchema } = require("../Server/models/User");
 const { Review, validateReview } = require("./models/Review");
 const cookieParser = require("cookie-parser");
-//
+const jwt =require('jsonwebtoken')
 
 const app = express();
 const cors = require("cors");
@@ -150,10 +150,10 @@ app.post("/signup", async (req, res) => {
     const newUser = new UserModel({ username, password });
     await newUser.save();
 
-   
-    //
+    const acesstoken=jwt.sign({username},secretkey,{expiresIn:'10h'}); 
+    
     res.cookie("username", username);
-    //    
+    res.cookie("jwt", acesstoken);      
     res.json({
       success: true,
       message: "Signup successful",
@@ -187,7 +187,11 @@ app.post("/login", async (req, res) => {
     await user.save();
 
     if (user) {
-      //
+      const acesstoken=jwt.sign({username},secretkey,{expiresIn:'10h'}); 
+      res.cookie('username', username);
+      
+       
+      res.cookie("jwt", acesstoken);      
       res.json({ message: "Login successful" });
     } else {
       res.status(401).json({ message: "Invalid credentials" });
