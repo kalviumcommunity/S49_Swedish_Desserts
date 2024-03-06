@@ -57,11 +57,12 @@ async function submitReview(req, res) {
       return res.status(400).send(error.details[0].message);
     }
 
-    const { dessertName, ratings, description } = req.body;
+    const { dessertName, ratings, description,username } = req.body;
     const newReview = new Review({
       dessertName,
       ratings,
       description,
+      username
     });
     await newReview.save();
 
@@ -158,6 +159,8 @@ app.post("/signup", async (req, res) => {
       success: true,
       message: "Signup successful",
       username,
+      acesstoken,
+     
     });
     console.log("Signup success", username);
   } catch (error) {
@@ -192,7 +195,15 @@ app.post("/login", async (req, res) => {
       
        
       res.cookie("jwt", acesstoken);      
-      res.json({ message: "Login successful" });
+      res.json({ 
+      success: true,
+      message: "Login successful" ,
+      username,
+      acesstoken,  
+      username: user.username,
+      
+   
+    });
     } else {
       res.status(401).json({ message: "Invalid credentials" });
     }

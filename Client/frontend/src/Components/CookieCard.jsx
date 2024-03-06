@@ -72,13 +72,7 @@ const CookieCard = () => {
 
   return (
     <div className="cookies-container">
-      <h1
-        style={{
-          background: "linear-gradient(to right, #ff69b4, #800080)",
-          WebkitBackgroundClip: "text" /* For WebKit-based browsers */,
-          WebkitTextFillColor: "transparent" /* For WebKit-based browsers */,
-        }}
-      >
+      <h1 className="Cookies">
         Cookies
       </h1>
       <div className="cards">

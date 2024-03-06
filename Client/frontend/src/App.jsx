@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar.jsx';
 import Home from './Components/Home.jsx';
@@ -9,15 +9,27 @@ import SignUpLogin from './Components/Signup.jsx'; // Import your SignUpLogin co
 import './App.css';
 import './Components/Review.css';
 import Footer from './Components/Footer';
-import Cookie from './Components/CookieStorage.jsx'
+import Cookie from './Components/CookieStorage.jsx';
+import ReviewsByUser from './Components/ReviewsByUser.jsx';
+import Cookies from 'js-cookie';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
 
+  let [cookieLogin,setCookieLogin]=useState();// To store the token for
+
+
+
+   useEffect(()=>{
+    async function CallMe(){
+      let x=Cookies.get("username");
+      setCookieLogin(x)
+    }
+      CallMe();
+   },[cookieLogin])
+
+ 
   // Function to handle successful login
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-    console.log("sucessfylly in")
-  };
 
   return (
     <div>
@@ -28,14 +40,15 @@ function App() {
       {/* Content */}
       <div className="content">
         {/* Render SignUpLogin if not logged in */}
-        {!isLoggedIn && <SignUpLogin onLoginSuccess={handleLoginSuccess} />}
+        {!cookieLogin && <SignUpLogin/>}
         {/* Render Routes if logged in */}
-        {isLoggedIn && (
+        { cookieLogin && (
           <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cakes" element={<CakeCard />} />
           <Route path="/cookies" element={<CookieCard />} />
           <Route path="/write-review" element={<Review/>} />
+          <Route path="/reviews/:username" element={<ReviewsByUser/>} />
         </Routes>
 
        

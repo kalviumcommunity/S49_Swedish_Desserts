@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Review.css';
+import Cookies from 'js-cookie';
 
 
 
@@ -9,9 +10,9 @@ import './Review.css';
 const Review = ({ setSubmittedData}) => {
   const [formData, setFormData] = useState({
     dessertName: '',
-   
     ratings: '',
-    description: ''
+    description: '',
+    username:localStorage.getItem("username")
   });
  
   const [successMessage, setSuccessMessage] = useState('');
@@ -23,6 +24,8 @@ const Review = ({ setSubmittedData}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    let x=(Cookies.get('username'));
+    console.log("x",typeof(x),x)
   
     // Check if any form field is empty
     if (!dessertName || !ratings || !description) {
@@ -44,14 +47,18 @@ const Review = ({ setSubmittedData}) => {
       // Check if dessertName exists in cakeNames or cookieNames
       if (cakeNames.includes(dessertName) || cookieNames.includes(dessertName)) {
         // Dessert found, proceed with form submission
+        setFormData({
+          dessertName: dessertName,
+          ratings: ratings,
+          description: description,
+          username:localStorage.getItem("username")
+        })
+        console.log("inside",x)
+        console.log("from something",formData)
         await axios.post('http://localhost:3000/reviews', formData);
         setSuccessMessage('Submitted successfully');
         setSubmittedData(prevData => [...prevData, formData]); // Update submitted data in App.jsx
-        setFormData({
-          dessertName: '',
-          ratings: '',
-          description: ''
-        });
+       
       } else {
         // Dessert not found, display error message
         alert("Dessert not found");
@@ -68,6 +75,7 @@ const Review = ({ setSubmittedData}) => {
   return (
     <div className="container">
       <div className="form-container">
+       
         <h2>Write a Review</h2>
         {successMessage && <p className="success-message">{successMessage}</p>} {/* Display success message */}
         <form onSubmit={handleSubmit}>

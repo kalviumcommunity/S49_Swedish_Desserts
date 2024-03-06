@@ -207,10 +207,11 @@
   }
   
   .review-card {
-    background: linear-gradient(to bottom right, #dccedc,rgb(180, 101, 158),#9251cf);
+    background: linear-gradient(to bottom right, #dccedc,rgb(180, 101, 158),#462465);
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
   }
   
   .review-card h3 {
