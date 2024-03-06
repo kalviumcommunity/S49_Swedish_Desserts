@@ -13,8 +13,12 @@ const reviewSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true
+  },
+  username: {
+    type: String,
+    required: true
   }
-});
+}); 
 
 const Review = mongoose.model('Review', reviewSchema);
 
@@ -22,7 +26,9 @@ function validateReview(review) {
   const schema = Joi.object({
     dessertName: Joi.string().required(),
     ratings: Joi.number().required(),
-    description: Joi.string().required()
+    description: Joi.string().required(),
+    username: Joi.string().required(),
+
   });
   return schema.validate(review);
 }

@@ -69,7 +69,7 @@ const SubmittedData = () => {
       try {
         await axios.delete(`http://localhost:3000/review/${id}`);
         setSubmittedData(submittedData.filter((review) => review._id !== id)); // Remove the deleted review from the state
-        window.location.reload(); // Refresh the page
+       
       } catch (error) {
         console.error("Error deleting review:", error);
       }

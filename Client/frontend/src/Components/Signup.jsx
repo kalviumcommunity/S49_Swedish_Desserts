@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie library
 import './Signup.css'; // Import CSS file for SignUpLogin
 
-const SignUpLogin = ({ onLoginSuccess }) => {
+const SignUpLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const [message, setMessage] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+ 
 
+  
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
     console.log("success");
@@ -25,28 +27,46 @@ const SignUpLogin = ({ onLoginSuccess }) => {
     try {
       if (isLogin) {
         // Login
+        
         const response = await axios.post('http://localhost:3000/login', { username, password });
         setMessage(response.data.message);
-        Cookies.set('username', username);
+        Cookies.set('username', response.data.username);
+        localStorage.setItem("username", response.data.username);
+        console.log(response.data);
+        localStorage.setItem('token', response.data.acesstoken);
+        // localStorage.setItem('userid', response.data._id);
+        Cookies.set('token', response.data.acesstoken);
       } else {
         // Sign Up
         const response = await axios.post('http://localhost:3000/signup', { username, password });
         setMessage(response.data.message);
         // Set username as a cookie after successful sign-up
-        Cookies.set('username', username);
+        Cookies.set('username', response.data.username);
+        localStorage.setItem("username", response.data.username);
+        console.log(response.data);
+        localStorage.setItem('token', response.data.acesstoken);
+        // localStorage.setItem('userid', response.data._id);
+        Cookies.set('token', response.data.acesstoken);
       }
+
+     
       // Set isAuthenticated to true after successful login/signup
       setIsAuthenticated(true);
+
+      
+    
       // Call the onLoginSuccess callback function
-      onLoginSuccess();
+     
     } catch (error) {
       console.error('Error:', error);
       setMessage('An error occurred. Please try again.');
     }
   };
-
+  // if (Cookies.get('username') && Cookies.get('token')) {
+  //   return null;} 
   // Close the popup if authenticated
   if (isAuthenticated) {
+    window.location.reload("/")
     return null;
   }
 

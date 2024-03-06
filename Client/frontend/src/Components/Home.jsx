@@ -5,13 +5,6 @@ import SubmittedData from "../Components/SubmittedData";
 import "./Home.css";
 import readreview from "../images/readreview.png";
 import close from "../images/close.png";
-import cake1 from "../images/cake1.png"
-import cake2 from "../images/cake2.png"
-import cake3 from "../images/cake3.jpg"
-import cake4 from "../images/cake4.png"
-import cake5 from "../images/cake5.png"
-import cake6 from "../images/cake6.jpg"
-import cake7 from "../images/cake7.jpg"
 
 import axios from "axios";
 import MultiActionAreaCard from "../Components/ui"
@@ -99,7 +92,7 @@ const Home = ({ submittedData }) => {
       {showChatbox && (
         <div className="chatbox">
           <div className="close-button-container">
-            <h3 style={{marginRight:"70px"}}>{dataLength} Reviews</h3>
+            <h3 style={{marginRight:"70px"}}>Reviews</h3>
     
             <button className="close-button" onClick={toggleChatbox}>
               <img src={close} alt="close" className="close-icon" />

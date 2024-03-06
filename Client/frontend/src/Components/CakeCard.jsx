@@ -20,14 +20,7 @@ const CakeDetails = ({ cake }) => {
 
   return (
     <div className="card">
-      {/* <h2>{cake.name}</h2>
-      <p>{cake.description}</p>
-      <img src={cake.image_url} alt={cake.name} />
-      <p>Calories: {cake.calories}</p>
-      <p>Type: {cake.type}</p>
-      <p>Occasions: {cake.occasions.join(", ")}</p> */}
-
-
+    
 
 
 
