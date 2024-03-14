@@ -16,7 +16,7 @@ const SubmittedData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/review");
+        const response = await axios.get("https://s49-swedish-desserts.onrender.com/review");
         // Reverse the order of the array to display the latest review first
         const reversedData = response.data.reverse();
         
@@ -48,7 +48,7 @@ const SubmittedData = () => {
   const handleSubmit = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/review/${selectedReviewId}`,
+        `https://s49-swedish-desserts.onrender.com/review/${selectedReviewId}`,
         updateFormData
       );
       setSubmittedData(
@@ -67,7 +67,7 @@ const SubmittedData = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this review?")) {
       try {
-        await axios.delete(`http://localhost:3000/review/${id}`);
+        await axios.delete(`https://s49-swedish-desserts.onrender.com/review/${id}`);
         setSubmittedData(submittedData.filter((review) => review._id !== id)); // Remove the deleted review from the state
        
       } catch (error) {

@@ -20,7 +20,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUsernames = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/users');
+        const response = await axios.get('https://s49-swedish-desserts.onrender.com/users');
         setUsernames(response.data.map(user => user.username));
 
         // Set initial value of selectedUser from cookie

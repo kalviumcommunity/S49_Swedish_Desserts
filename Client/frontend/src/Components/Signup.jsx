@@ -28,7 +28,7 @@ const SignUpLogin = () => {
       if (isLogin) {
         // Login
         
-        const response = await axios.post('http://localhost:3000/login', { username, password });
+        const response = await axios.post('https://s49-swedish-desserts.onrender.com/login', { username, password });
         setMessage(response.data.message);
         Cookies.set('username', response.data.username);
         localStorage.setItem("username", response.data.username);
@@ -38,7 +38,7 @@ const SignUpLogin = () => {
         Cookies.set('token', response.data.acesstoken);
       } else {
         // Sign Up
-        const response = await axios.post('http://localhost:3000/signup', { username, password });
+        const response = await axios.post('https://s49-swedish-desserts.onrender.com/signup', { username, password });
         setMessage(response.data.message);
         // Set username as a cookie after successful sign-up
         Cookies.set('username', response.data.username);
