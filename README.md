@@ -1,4 +1,3 @@
-# Dessert Review Website
 
 This is a full-stack project built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. The project is a dessert review website where users can explore and review various desserts like cakes and cookies.
 
