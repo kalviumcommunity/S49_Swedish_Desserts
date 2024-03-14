@@ -18,7 +18,7 @@ const Home = ({ submittedData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/review");
+        const response = await axios.get("https://s49-swedish-desserts.onrender.com/review");
         
         const length = response.data.length;
         console.log("Length of the dataset:", length); // Log the length of the dataset

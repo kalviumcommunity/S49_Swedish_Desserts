@@ -35,12 +35,12 @@ const Review = ({ setSubmittedData}) => {
   
     try {
       // Check if dessert name exists in cakes API
-      const cakesResponse = await fetch('http://localhost:3000/getcakes');
+      const cakesResponse = await fetch('https://s49-swedish-desserts.onrender.com/getcakes');
       const cakesData = await cakesResponse.json();
       const cakeNames = cakesData.map(cake => cake.name);
   
       // Check if dessert name exists in cookies API
-      const cookiesResponse = await fetch('http://localhost:3000/getcookies');
+      const cookiesResponse = await fetch('https://s49-swedish-desserts.onrender.com/getcookies');
       const cookiesData = await cookiesResponse.json();
       const cookieNames = cookiesData.map(cookie => cookie.name);
   
@@ -55,7 +55,7 @@ const Review = ({ setSubmittedData}) => {
         })
         console.log("inside",x)
         console.log("from something",formData)
-        await axios.post('http://localhost:3000/reviews', formData);
+        await axios.post('https://s49-swedish-desserts.onrender.com/reviews', formData);
         setSuccessMessage('Submitted successfully');
         setSubmittedData(prevData => [...prevData, formData]); // Update submitted data in App.jsx
        

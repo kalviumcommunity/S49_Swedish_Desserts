@@ -69,7 +69,7 @@ const CakeCard = () => {
   useEffect(() => {
     const fetchCakes = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/getcakes");
+        const response = await axios.get("https://s49-swedish-desserts.onrender.com/getcakes");
         setCakes(response.data);
       } catch (error) {
         console.error("Error fetching cakes:", error);

@@ -61,7 +61,7 @@ const CookieCard = () => {
   useEffect(() => {
     const fetchCookies = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/getcookies");
+        const response = await axios.get("https://s49-swedish-desserts.onrender.com/getcookies");
         setCookies(response.data);
       } catch (error) {
         console.error("Error fetching cookies:", error);

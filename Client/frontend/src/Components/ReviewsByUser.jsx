@@ -9,7 +9,7 @@ const ReviewsByUser = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/review?username=${username}`);
+        const response = await axios.get(`https://s49-swedish-desserts.onrender.com/review?username=${username}`);
         const filteredReviews = response.data.filter(review => review.username === username);
         setReviews(filteredReviews);
       } catch (error) {

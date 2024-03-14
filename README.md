@@ -22,6 +22,11 @@ This is a full-stack project built using the MERN (MongoDB, Express.js, React.js
 - **Axios**: Used for making HTTP requests from the client-side React application.
 
 
+# Deployed Link
+
+https://good-desserts.netlify.app/
+
+
 # Project Structure
 
 The project follows a structured architecture with separate directories for the client-side and server-side code:
